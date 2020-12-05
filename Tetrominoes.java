@@ -18,11 +18,11 @@ public enum Tetrominoes {
   MirroredLShape(new int[][] { { 0,0 }, { 0,1 }, { -1,1 }, { 0,-1 } }, new Color(125, 0, 255));
  
   public int[][] coords;
-  public Color color;
+  public Color c;
   
   //constructor
   Tetrominoes(int[][] coords, Color c) {
     this.coords = coords;
-    color = c;
+    this.c = c;
   }
 };
