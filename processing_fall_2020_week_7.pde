@@ -1,13 +1,14 @@
+Board game;
+
 void setup() {
-  Board game = new Board();
-  println(game.currentShape.getShape());
+  size(200, 400);
+  game = new Board();
   game.newPiece();
   println(game.currentShape.getShape());
-  game.drawBoard();
 }
 
 void draw() {
-  
+  game.drawBoard();
 }
 
 public class Board {
@@ -56,7 +57,7 @@ public class Board {
   }
   
   public void drawBoard() {
-    int boardTop = (int) BOARD_HEIGHT * squareHeight();
+    int boardTop = (int) squareHeight();
     for (int row = 0; row < BOARD_HEIGHT; row++) {
       for (int col = 0; col < BOARD_WIDTH; col++) {
         Tetrominoes shape = shapeAt(col, BOARD_HEIGHT - row - 1);
@@ -71,8 +72,29 @@ public class Board {
       for (int i = 0; i < 4; i++) {
         int x = currentX + currentShape.x(i);
         int y = currentY + currentShape.y(i);
-        drawSquare(x * squareWidth(), boardTop + (BOARD_HEIGHT - y - 1) * squareHeight(), currentShape.getShape());
+        drawSquare(x * squareWidth(), boardTop + (BOARD_HEIGHT + y + 1) * squareHeight(), currentShape.getShape());
       }
     }
+  }
+  
+  private boolean tryMove(Shape newPiece, int newX, int newY) {
+    for (int i = 0; i < 4; i++) {
+      int x = newX + newPiece.x(i);
+      int y = newY + newPiece.y(i);
+      
+      if (x < 0 || x >= BOARD_WIDTH || y < 0 || y > BOARD_HEIGHT) {
+        return false;
+      }
+      
+      if (shapeAt(x, y) != Tetrominoes.NoShape) {
+        return false;
+      }
+    }
+    
+    currentShape = newShape;
+    currentX = newX;
+    currentY = newY;
+    
+    return true;
   }
 }
