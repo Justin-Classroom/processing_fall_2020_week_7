@@ -7,9 +7,9 @@ public enum Tetrominoes {
   
   SShape(new int[][] { { 0,1 }, { 0,0 }, { 1,0 }, { -1,1 } }, new Color(0, 125, 125)),
   
-  LineShape(new int[][] { { 0,1 }, { 0,0 }, { 0,-1 }, { 0,-2 } }, new Color(125, 125, 0)),
+  LineShape(new int[][] { { 0,1 }, { 0,0 }, { 0,-1 }, { 0,2 } }, new Color(125, 125, 0)),
   
-  TShape(new int[][] { { 0,1 }, { 0,0 }, { -1,-1 }, { 1,-1 } }, new Color(255, 0, 125)),
+  TShape(new int[][] { { 0,1 }, { 0,0 }, { -1,1 }, { 1,1 } }, new Color(255, 0, 125)),
   
   SquareShape(new int[][] { { 0,0 }, { 1,0 }, { 0,-1 }, { 1,-1 } }, new Color(0, 0, 255)),
   
